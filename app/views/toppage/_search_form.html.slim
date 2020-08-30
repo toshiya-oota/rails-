@@ -1,0 +1,22 @@
+.row
+  .col-md-12
+    .card.card-default
+      .card-header
+        h3.card-title
+          | 親子孫検索
+      = form_with scope: :search, method: :get, local: true, class: 'form-horizontal' do |f|
+        .card-body
+          .form-group.row
+            = f.label '親番号', class: 'col-sm-2 col-form-label'
+            .col-sm-10
+              = f.text_field :parent_no_eq, class: 'form-control'
+          .form-group.row
+            = f.label '子名前', class: 'col-sm-2 col-form-label'
+            .col-sm-10
+              = f.text_field :child_child_name_eq, class: 'form-control'
+          .form-group.row
+            = f.label '孫名前', class: 'col-sm-2 col-form-label'
+            .col-sm-10
+              = f.text_field :child_grand_children_grand_child_name_eq, class: 'form-control'
+        .card-footer.text-right
+          = f.submit "検索", class: "button btn btn-default"

@@ -5,21 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'csv'
+require "csv"
 
 def import_csv(csv_path)
-  filename = csv_path.basename('.csv').to_s
+  filename = csv_path.basename(".csv").to_s
   class_name = filename[4..].classify
   model = Object.const_get(class_name)
 
   puts "==== START #{model.table_name} ===="
-  CSV.foreach(csv_path.to_s, headers: true) do |row|
-    next puts "exist record #{row[0]}" if model.exists?(id: row[0])
+  CSV.foreach(csv_path.to_s, :headers => true) do |row|
+    next puts "exist record #{row[0]}" if model.exists?(:id => row[0])
 
-    if row[0].to_s.end_with?('00')
+    if row[0].to_s.end_with?("00")
       print row[0]
     else
-      print '.'
+      print "."
     end
     model.create!(row.to_hash)
   end
@@ -29,7 +29,7 @@ end
 
 Rails.
   root.
-  join('db', 'seeds', 'csvs').
-  glob('*.csv').
+  join("db", "seeds", "csvs").
+  glob("*.csv").
   sort.
   each { |csv_path| import_csv(csv_path) }

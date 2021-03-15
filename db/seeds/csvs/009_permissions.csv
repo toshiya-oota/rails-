@@ -1,0 +1,13 @@
+id,name,en_name
+1,商品管理_参照,product_reference
+2,商品管理_作成,product_create
+3,商品管理_更新,product_update
+4,商品管理_削除,product_delete
+5,会員管理_参照,customer_reference
+6,会員管理_作成,customer_create
+7,会員管理_更新,customer_update
+8,会員管理_削除,customer_delete
+9,システムユーザ管理_参照,system_user_reference
+10,システムユーザ管理_作成,system_user_create
+11,システムユーザ管理_更新,system_user_update
+12,システムユーザ管理_削除,system_user_delete

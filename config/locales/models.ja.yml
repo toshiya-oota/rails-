@@ -1,0 +1,46 @@
+ja:
+  activerecord:
+    models:
+      product: 商品
+
+    attributes:
+      product:
+        id: 商品ID
+        name: 商品名
+        product_div: 商品部門
+        item_cd: 商品コード
+        product_cd: 製品コード
+        category: カテゴリ
+        sex : 対象性別
+        status: 状態
+        sale_start: 販売開始日時
+        sale_end: 販売開始終了日時
+        image: 商品画像
+      product_detail:
+        color: 色
+        size: サイズ
+        season: シーズン
+        product_country: 生産国
+      system_user:
+        name: 氏名
+        admin: 管理者フラグ
+  enums:
+    system_user:
+      admin:
+        admin: 管理者
+        general: 一般ユーザ
+    product:
+      category:
+        outer: アウター
+        bottoms: ボトムス
+        shirts: シャツ
+        cutsew: カットソー
+        nit: ニット
+        goods: グッズ
+        inner: インナー
+      status:
+        disabled: 無効
+        normal: 通常
+        sale: セール中
+        pricedown: 売価変更
+        end: 販売終了

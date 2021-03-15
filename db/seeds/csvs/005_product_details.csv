@@ -1,0 +1,13 @@
+id,product_id,color,size,season,product_country,scheduled_arrive
+1,1,white,S,spring,Bangladesh,
+2,1,white,M,spring,Bangladesh,
+3,1,white,L,spring,Bangladesh,
+4,1,white,XL,spring,Bangladesh,
+5,2,"white,black",S,summer,Japan,
+6,2,"white,black",M,summer,Japan,
+7,2,"white,black",L,summer,Japan,
+8,2,"white,black",XL,summer,Japan,
+9,3,black,S,spring,China,
+10,3,black,M,spring,China,
+11,3,black,L,spring,China,
+12,3,black,XL,spring,China,

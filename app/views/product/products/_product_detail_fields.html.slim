@@ -1,0 +1,24 @@
+tr.nested-fields
+  td = f.input :color, label: false
+  td = f.input :size, label: false,
+       as: :radio_buttons,
+       collection: ProductDetail.sizes.keys.map{ |k| [k, ProductDetail.enum_i18n(:size, k)] },
+       label_method: :second,
+       value_method: :first,
+       wrapper: :horizontal_collection_inline
+  td = f.input :season,
+       as: :select,
+       collection: ProductDetail.seasons.keys.map{ |k| [k, ProductDetail.enum_i18n(:season, k)] },
+       label_method: :second,
+       value_method: :first,
+       label: false,
+       include_blank: "選択して下さい"
+  td = f.input :product_country,
+       as: :select,
+       collection: ProductDetail.product_countries.keys.map{ |k| [k, ProductDetail.enum_i18n(:product_country, k)] },
+       label_method: :second,
+       value_method: :first,
+       label: false,
+       include_blank: "選択して下さい"
+  td = f.input :scheduled_arrive, label: false, html5: true, wrapper: :horizontal_multi_select
+  td = link_to_remove_association "削除", f ,class: 'btn btn-default'

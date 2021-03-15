@@ -1,0 +1,54 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    .content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1.m-0.text-dark
+              | 商品管理画面
+    .content
+      .container-fluid
+        = render 'search_form'
+        = link_to '新規登録', new_product_product_path, class: 'btn btn-default mb-3'
+        .row
+          .col-lg-12
+            .card
+              .card-header
+                h3.card-title
+                  | 商品一覧
+              table.table.table-hover
+                thead.thead-default
+                  tr
+                    th = Product.human_attribute_name(:name)
+                    th 商品画像
+                    th 商品コード
+                    th 商品名
+                    th 分類
+                    th 性別
+                    th ステータス
+                    th 販売期限
+                  tbody
+                  - if @products
+                    - @products.each do |product|
+                      tr
+                        td = link_to product.id, product_product_path(product.id)
+                        td
+                          - if product.image.present?
+                            = image_tag product.image.thumb.url
+                          - else
+                            = '画像無し'
+                        td = product.product_cd
+                        td = product.name
+                        td = product.category_label
+                        td = product.sex_label
+                        td = product.status_label
+                        td = product.sale_period
+  aside.control-sidebar.control-sidebar-dark
+    .p-3
+      h5
+        | Title
+      p
+        | Sidebar content
+  = render 'layouts/footer'

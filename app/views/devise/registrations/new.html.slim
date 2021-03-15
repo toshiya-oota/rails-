@@ -1,0 +1,32 @@
+.login-page
+  .login-box
+    .login-logo
+      b
+        | Rails
+      | 勉強部屋
+    .card
+      .card-body.login-card-body
+        p.login-box-msg
+          | システムユーザ新規登録
+        = simple_form_for(resource, as: resource_name, url: register_system_user_path) do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :login_id,
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: "login_id" }
+            = f.input :name,
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: "name" }
+            = f.input :password,
+              required: true,
+              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+              input_html: { autocomplete: "new-password" }
+            = f.input :password_confirmation,
+              required: true,
+              input_html: { autocomplete: "new-password" }
+          .row.justify-content-end
+            .col-4
+              = f.button :submit, "新規登録", class: 'btn btn-primary'
+    = render "devise/shared/links"

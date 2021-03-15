@@ -1,0 +1,36 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 ロール管理
+    section.content
+      .container-fluid
+        = simple_form_for @role, url: system_roles_path, wrapper: :horizontal_form do |f|
+          .row
+            .col-md-12
+              .card.card-secondary
+                .card-header
+                  h3.card-title ロール新規登録
+                .card-body
+                = f.input :name
+                hr
+                = f.input :permission_ids,
+                  as: :check_boxes,
+                  collection: Permission.product_permission.map { |product_permission| [product_permission.name.slice(5..), product_permission.id]},
+                  label: '製品管理',
+                  wrapper: :horizontal_collection_inline
+                hr
+                = f.input :permission_ids,
+                  as: :check_boxes,
+                  collection: Permission.customer_permission.map { |customer_permission| [customer_permission.name.slice(5..), customer_permission.id]},
+                  label: '顧客管理',
+                  wrapper: :horizontal_collection_inline
+                .card-footer.text-right
+                  = f.submit class: 'btn btn-primary', data: { confirm: t('confirmation.create') }
+        .row
+          .col-md-12
+            = link_to '戻る', system_roles_path, class: 'btn btn-default mb-3'

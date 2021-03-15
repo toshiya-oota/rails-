@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  color: 1
+  size: 1
+  season: 1
+  product_country: 1
+  scheduled_arrive: 
+
+two:
+  name: MyString
+  color: 1
+  size: 1
+  season: 1
+  product_country: 1
+  scheduled_arrive: 

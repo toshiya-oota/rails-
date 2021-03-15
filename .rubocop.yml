@@ -1,0 +1,43 @@
+inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.7.1
+  TargetRailsVersion: 6.0.3.3
+  Exclude:
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - ".git/**/*"
+    - "config/**/*"
+    - "app/channels/**/*"
+    - "app/mailers/*"
+    - "db/migrate/*"
+    - "bin/*"
+    - "db/schema.rb"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "Gemfile"
+    - "Rakefile"
+    - "config.ru"
+
+Rails:
+  Enabled: true
+
+# デフォルトをダブルクォーテーションに設定
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# 日本語のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# classの説明コメントは不要
+Style/Documentation:
+  Enabled: false
+
+# フローズンリテラルコメントは不要
+Style/FrozenStringLiteralComment:
+  Enabled: false

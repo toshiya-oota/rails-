@@ -1,0 +1,34 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 システムユーザ管理
+    section.content
+      .container-fluid
+        .row
+          .col-md-12
+            .card.card-secondary
+              .card-header
+                h3.card-title システムユーザ新規登録
+              = simple_form_for @system_user, url: system_system_users_path, wrapper: :horizontal_form do |f|
+                .card-body
+                  = f.input :login_id
+                  = f.input :name
+                  = f.input :password
+                  = f.input :password_confirmation
+                  = f.input :admin,
+                    as: :radio_buttons,
+                    collection: SystemUser.admins.keys.map(&:to_sym),
+                    wrapper: :horizontal_collection_inline,
+                    required: true
+                  = f.input :role_ids, as: :check_boxes, collection: Role.all, label_method: :name, value_method: :id, label: '権限',wrapper: :horizontal_collection_inline
+                .card-footer.text-right
+                  = f.button :submit, class: 'btn btn-primary', data: { confirm: t('confirmation.create') }
+        .row
+          .col-md-12
+            = link_to '戻る', system_system_users_path, class: 'btn btn-default mb-3'
+  = render 'layouts/footer'

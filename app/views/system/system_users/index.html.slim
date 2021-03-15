@@ -1,0 +1,36 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 システムユーザ管理
+    section.content
+      .container-fluid
+        = render 'search_form'
+        .row
+          .col-md-12
+            .card
+              .card-header
+                h3.card-title システムユーザ一覧
+                .card-tools
+                  /= paginate @system_users
+              .card-body.p-0
+                table.table.table-sm
+                  thead
+                    tr
+                      th = SystemUser.human_attribute_name(:id)
+                      th = SystemUser.human_attribute_name(:name)
+                      th ユーザタイプ
+                  tbody
+                    - @system_users.each do |system_user|
+                      tr
+                        td = link_to system_user.id, edit_system_system_user_path(id: system_user.id)
+                        td = system_user.name
+                        td = system_user.admin_label
+        .row
+          .col-md-12.text-right
+            = link_to '新規登録', new_system_system_user_path, class: 'btn btn-default mb-3'
+  = render 'layouts/footer'

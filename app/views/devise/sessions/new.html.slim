@@ -1,0 +1,25 @@
+.login-page
+  .login-box
+    .login-logo
+      b
+        | Rails
+      | 勉強部屋
+    .card
+      .card-body.login-card-body
+        p.login-box-msg
+          | Sign in to start your session
+        = form_with(model: @system_user, url: system_user_session_path, local: true) do |f|
+          .input-group.mb-3
+            = f.text_field(:login_id,  class: 'form-control', placeholder: 'ログインID')
+            .input-group-append
+              .input-group-text
+                span.fas.fa-user
+          .input-group.mb-3
+            = f.password_field(:password, class: 'form-control', placeholder: 'パスワード')
+            .input-group-append
+              .input-group-text
+                span.fas.fa-lock
+          .row.justify-content-end
+            .col-4
+              = f.submit "ログイン",class: 'btn btn-primary'
+    = render "devise/shared/links"

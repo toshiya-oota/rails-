@@ -1,0 +1,42 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    .content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1.m-0.text-dark
+              | 会員管理画面
+    .content
+      .container-fluid
+        = render 'search_form'
+        .row
+          .col-lg-12
+            .card
+              .card-header
+                h3.card-title
+                  | 会員一覧
+              table.table.table-hover
+                thead.thead-default
+                  tr
+                    th 会員ID
+                    th 氏名
+                    th メールアドレス
+                    th 電話番号
+                  tbody
+                  - if @customers
+                    - @customers.each do |customer|
+                      tr
+                        td = link_to customer.id, customer_customer_path(customer.id)
+                        td = customer.name
+                        td = customer.email
+                        td = customer.tel
+        = link_to '新規登録', new_customer_customer_path, class: 'btn btn-default mb-3'
+  aside.control-sidebar.control-sidebar-dark
+    .p-3
+      h5
+        | Title
+      p
+        | Sidebar content
+  = render 'layouts/footer'

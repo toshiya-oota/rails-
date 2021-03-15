@@ -1,0 +1,36 @@
+ja:
+  enums:
+    product:
+      category:
+        outer: アウター
+        bottoms: ボトムス
+        shirts: シャツ
+        cutsew: カットソー
+        nit: ニット
+        goods: グッズ
+        inner: インナー
+      sex:
+        gender_free: ジェンダーフリー
+        womens: ウィメンズ
+        mens: メンズ
+      status:
+        end: 終了
+        pricedown: 売価変更
+        sale: セール
+        normal: 通常
+        disabled: 無効
+    product_detail:
+      size:
+        S: S
+        M: M
+        L: L
+        XL: XL
+      season:
+        spring: 春
+        summer: 夏
+        autumn: 秋
+        winter: 冬
+      product_country:
+        Japan: 日本
+        China: 中国
+        Bangladesh: バングラデシュ

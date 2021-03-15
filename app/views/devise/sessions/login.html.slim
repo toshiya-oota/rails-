@@ -1,0 +1,30 @@
+.login-page
+  .login-box
+    .login-logo
+      b
+        | Rails
+      | 勉強部屋
+    .card
+      .card-body.login-card-body
+        p.login-box-msg
+          | Sign in to start your session
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .input-group.mb-3
+            = f.input :login_id,
+              required: false,
+              autofocus: true,
+              input_html: { autocomplete: "login_id", :class => 'form-control' }
+            .input-group-append
+              .input-group-text
+                span.fas.fa-envelope
+          .input-group.mb-3
+            = f.input :password,
+              required: false,
+              autofocus: true,
+              input_html: { autocomplete: "current-password", :class => 'form-control' }
+            .input-group-append
+              .input-group-text
+                span.fas.fa-lock
+            .col-4
+              = f.button :submit, "ログイン", class: 'btn btn-primary btn-block'
+          = render "devise/shared/links"

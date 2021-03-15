@@ -1,0 +1,58 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  a.brand-link[href="/"]
+    span.brand-text.font-weight-light
+      | Rails 勉強部屋
+      p
+        = current_system_user.name
+  .sidebar
+    nav.mt-2
+      ul.nav.nav-pills.nav-flat.nav-sidebar.nav-child-indent.flex-column[data-widget="treeview" role="menu" data-accordion="false"]
+        li.nav-item.has-treeview.menu-open
+          li.nav-item.has-treeview
+            a.nav-link[href="#"]
+              i.fa.fa-shopping-cart.nav-icon
+              p
+                | Ransack
+                i.fa.fa-angle-left.right
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to parent_parents_path, class: "nav-link"
+                  i.far.fa-circle.nav-icon
+                  p 親子孫
+          li.nav-item.has-treeview
+            a.nav-link[href="#"]
+              i.fa.fa-box.nav-icon
+              p
+                | 製品管理
+                i.fa.fa-angle-left.right
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to product_products_path, class: "nav-link"
+                  i.fab.fa-product-hunt.nav-icon
+                  p 商品管理
+          li.nav-item.has-treeview
+            a.nav-link[href="#"]
+              i.fas.fa-user-circle.nav-icon
+              p
+                | 顧客管理
+                i.fa.fa-angle-left.right
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to customer_customers_path, class: "nav-link"
+                  i.fab.fa-product-hunt.nav-icon
+                  p 会員管理
+          li.nav-item.has-treeview
+            a.nav-link[href="#"]
+              i.fa.fa-cog.nav-icon
+              p
+                | システム管理
+                i.fa.fa-angle-left.right
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to system_system_users_path, class: "nav-link"
+                  i.fas.fa-user-cog.nav-icon
+                  p ユーザ管理
+              li.nav-item
+                = link_to system_roles_path, class: "nav-link"
+                  i.fas.fa-user-cog.nav-icon
+                  p ロール管理

@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    .card.card-secondary
+      .card-header
+        h3.card-title 権限検索
+      = search_form_for @q, url: system_roles_path, wrapper: :horizontal_search_form do |f|
+        .card-body
+          = f.input :name_start, label: Role.human_attribute_name(:name), required: false
+        .card-footer.text-center
+          = f.submit class: 'btn btn-default'

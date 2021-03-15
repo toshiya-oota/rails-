@@ -1,0 +1,11 @@
+footer.main-footer
+  .float-right.d-none.d-sm-inline
+    |  Anything you want
+    = link_to destroy_system_user_session_path, method: :delete, class: 'btn-sm btn-default'
+        | ログアウト
+  strong
+    | Copyright © 2020
+    a[href="https://otapedia.org"]
+      | otapedia
+    | .
+  |  All rights reserved.

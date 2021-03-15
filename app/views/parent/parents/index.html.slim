@@ -1,0 +1,44 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    .content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1.m-0.text-dark
+              | 親子孫チュートリアル
+    .content
+      .container-fluid
+        = render 'search_form'
+        .row
+          .col-lg-12
+            .card
+              .card-header
+                h3.card-title
+                  | 親一覧
+              table.table.table-hover
+                thead.thead-default
+                  tr
+                    th 親番号
+                    th 親名前
+                    th 子名前
+                    th 孫名前
+                    th テスト
+                  tbody
+                  - if @parents
+                    - @parents.each do |parent|
+                      tr
+                        td = parent.parent_no
+                        td = parent.parent_name
+                        - parent.child.each do |child|
+                          td = child.child_name
+                          - child.grand_children.each do |grand_child|
+                            td = "#{grand_child.grand_child_name}"
+  aside.control-sidebar.control-sidebar-dark
+    .p-3
+      h5
+        | Title
+      p
+        | Sidebar content
+  = render 'layouts/footer'

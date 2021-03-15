@@ -1,0 +1,55 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 商品管理
+    section.content
+      .container-fluid
+        .row
+          .col-md-12
+            .card.card-primary
+              .card-header
+                h3.card-title 商品詳細
+              .card-body
+                dl.row
+                  - if @product.image.present?
+                    dt.col-sm-3.text-right 画像
+                    dd.col-sm-9
+                      = link_to 'ダウンロード', download_product_product_path(@product), class: 'btn btn-sm btn-default mb-2'
+                    dt.col-sm-3
+                    dd.col-sm-9
+                      = image_tag @product.image_url, class: 'img-thumbnail'
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:id)
+                  dd.col-sm-9 = @product.id
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:name)
+                  dd.col-sm-9 = @product.name
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:product_div)
+                  dd.col-sm-9 = @product.product_div
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:item_product_cd)
+                  dd.col-sm-9 = @product.item_cd + @product.product_cd
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:category)
+                  d.col-sm-9 = @product.category_label
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:sex)
+                  dd.col-sm-9 = @product.sex_label
+                  dt.col-sm-3.text-right = Product.human_attribute_name(:status)
+                  dd.col-sm-9 = @product.status_label
+                  dt.col-sm-3.text-right = ProductDetail.human_attribute_name(:color)
+                  - colors = @product.product_details.map { |product_detail| product_detail.color}
+                  dd.col-sm-9 = colors.uniq.join(',')
+                  dt.col-sm-3.text-right = ProductDetail.human_attribute_name(:size)
+                  - sizes = @product.product_details.map { |product_detail| product_detail.size_label}
+                  dd.col-sm-9 = sizes.join(',')
+                  dt.col-sm-3.text-right = ProductDetail.human_attribute_name(:season)
+                  - seasons = @product.product_details.map { |product_detail| product_detail.season_label}
+                  dd.col-sm-9 = seasons.uniq.join(',')
+              .card-footer.text-right
+                = link_to '編集', edit_product_product_path, class: 'btn btn-default mr-3'
+                = link_to '削除', product_product_path(@product.id), method: :delete, class: 'btn btn-danger', data: { confirm: '削除しますか?' }
+        .row
+          .col-md-12
+            = link_to '戻る', product_products_path, class: 'btn btn-default mb-3 mr-3'
+  = render 'layouts/footer'

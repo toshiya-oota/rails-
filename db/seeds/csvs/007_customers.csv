@@ -1,0 +1,11 @@
+id,name,email,tel,address1,address2
+1,山田 太郎,yamada@example.com,12-3456-789,東京都,港区
+2,鈴木 一郎,ichiro@example.com,16-1616-1616,愛知県,愛知市
+3,田中 二郎,jiro@exapmple.com,26-2626-2626,福島県,福島市
+4,高橋 三郎,sab@example.com,38-3838-3838,北海道,釧路市
+5,桜木 花道,sakuragi@shouhoku.com,08077777777,神奈川県,横浜市
+6,流川 楓,rukawa@shouhoku.com,090909090,神奈川県,横浜市
+7,碇シンジ,ikari@nerv.com,1111111111,東京都,第３新東京市
+8,式波アスカ,asuka@nerv.com,222222222,東京都,第３新東京市
+9,綾波レイ,rei@nerv.com,000000000,東京都,第３新東京市
+10,渚カオル,kaoru@eva.com,999999999,東京都,第３新東京市

@@ -1,0 +1,73 @@
+.wrapper
+  = render 'layouts/navbar'
+  = render 'layouts/sidemenu'
+  .content-wrapper
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 商品編集
+    section.content
+      .container-fluid
+        = simple_form_for @product, url: product_product_path, method: :put, wrapper: :horizontal_form do |f|
+          .row
+            .col-md-12
+              .card.card-primary
+                .card-header
+                  h3.card-title 商品編集
+                .card-body
+                  = f.input :image, as: :file, wrapper: :horizontal_file
+                  = f.input :product_div,
+                    as: :select,
+                    collection: ProductConst.product_divison,
+                    label_method: :const_cd_text,
+                    value_method: :const_cd,
+                    include_blank: "選択して下さい",
+                    required: true
+                  = f.input :item_cd
+                  = f.input :product_cd
+                  = f.input :name
+                  = f.input :category,
+                    as: :select,
+                    collection: Product.categories.keys.map{ |k| [k, Product.enum_i18n(:category, k)] },
+                    label_method: :second,
+                    value_method: :first,
+                    include_blank: "選択して下さい"
+                  = f.input :sex,
+                    as: :select,
+                    collection: Product.sexes.keys.map{ |k| [k, Product.enum_i18n(:sex, k)] },
+                    label_method: :second,
+                    value_method: :first,
+                    include_blank: "選択して下さい"
+                  = f.input :status,
+                    as: :radio_buttons,
+                    collection: Product.statuses.keys.map{ |k| [k, Product.enum_i18n(:status, k)] },
+                    label_method: :second,
+                    value_method: :first,
+                    wrapper: :horizontal_collection_inline
+                  = f.input :sale_start, html5: true, wrapper: :horizontal_multi_select
+                  = f.input :sale_end, html5: true, wrapper: :horizontal_multi_select
+              .card.card-primary
+                .card-header
+                  h3.card-title 商品詳細
+                .card-body.p-0
+                  table.table.table-hover.table-sm#detail-association-insertion-product-detail
+                    thead.thead-default
+                      tr
+                        th 色
+                        th サイズ
+                        th シーズン
+                        th 生産国
+                        th 入荷予定日
+                        th 削除
+                    tbody
+                      = f.simple_fields_for :product_details do |d|
+                        = render partial: 'product_detail_fields', locals: { f: d }
+                  .card-footer.text-right
+                    = link_to_add_association '商品詳細を追加する', f, :product_details,
+                      class: 'btn btn-default',
+                      data: { association_insertion_node: '#detail-association-insertion-product-detail', association_insertion_method: 'append' }
+              = f.submit class: "button btn btn-primary float-right", data: { confirm: t('confirmation.create') }
+        .row
+          .col-md-12
+            = link_to '戻る', product_products_path, class: 'btn btn-default'

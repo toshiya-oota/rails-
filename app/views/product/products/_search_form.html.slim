@@ -1,0 +1,18 @@
+.row
+  .col-md-12
+    .card.card-primary
+      .card-header
+        h3.card-title
+          | 商品検索
+      = form_with scope: :q, method: :get, local: true, class: 'form-horizontal' do |f|
+        .card-body
+          .form-group.row
+            = f.label Product.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
+            .col-sm-10
+              = f.text_field :parent_no_eq, class: 'form-control'
+          .form-group.row
+            = f.label '商品コード', class: 'col-sm-2 col-form-label'
+            .col-sm-10
+              = f.text_field :child_child_name_eq, class: 'form-control'
+        .card-footer.text-right
+          = f.submit "検索", class: "button btn btn-default"

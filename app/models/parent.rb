@@ -1,3 +1,3 @@
 class Parent < ApplicationRecord
-  has_many :child, foreign_key: :parent_id
+  has_many :child
 end

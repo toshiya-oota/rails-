@@ -4,7 +4,7 @@
       .card-header
         h3.card-title
           | 親子孫検索
-      = form_with scope: :search, method: :get, local: true, class: 'form-horizontal' do |f|
+      = form_with scope: :q, method: :get, local: true, class: 'form-horizontal' do |f|
         .card-body
           .form-group.row
             = f.label '親番号', class: 'col-sm-2 col-form-label'
